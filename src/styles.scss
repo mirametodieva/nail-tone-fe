@@ -1,8 +1,13 @@
 @use 'colors';
+@use 'mat-form-field';
+@use 'buttons';
+@use 'fonts';
+@use 'mat-toolbar';
 
 @use 'm3-theme' as theme;
 @use '@angular/material' as mat;
 @include mat.core;
+
 
 html {
   @include mat.core-theme(theme.$light-theme);
@@ -18,5 +23,24 @@ html, body {
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  @include fonts.regular-text;
+  background: colors.$cream;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
 }

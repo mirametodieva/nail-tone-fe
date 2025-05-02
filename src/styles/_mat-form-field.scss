@@ -1,0 +1,18 @@
+@use 'colors';
+
+.mat-mdc-form-field {
+  --mat-form-field-container-height: 30px;
+  --mat-form-field-container-vertical-padding: 7px;
+
+  .mat-mdc-text-field-wrapper {
+    height: 38px;
+    font-size: 14px;
+    background-color: colors.$cream;
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mat-mdc-notch-piece {
+  border: none;
+}

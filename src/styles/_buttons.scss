@@ -1,0 +1,102 @@
+@use 'colors';
+
+.mat-mdc-outlined-button,
+.mat-mdc-raised-button,
+.mat-mdc-button {
+  border-radius: 8px !important;
+  text-transform: uppercase !important;
+}
+
+.mat-mdc-button {
+  &.dark-button {
+    color: colors.$deep-ocean !important;
+
+    &:hover .mat-mdc-button-persistent-ripple::before,
+    &:active .mat-mdc-button-persistent-ripple::before {
+      background-color: colors.$deep-ocean !important;
+    }
+  }
+
+  &.cream-button {
+    color: colors.$cream !important;
+
+    &:hover .mat-mdc-button-persistent-ripple::before,
+    &:active .mat-mdc-button-persistent-ripple::before {
+      background-color: colors.$cream !important;
+    }
+  }
+}
+
+.mat-mdc-raised-button {
+  &.dark-button {
+    background: colors.$deep-ocean !important;
+    color: colors.$cream !important;
+
+    &:hover .mat-mdc-button-persistent-ripple::before,
+    &:active .mat-mdc-button-persistent-ripple::before {
+      background-color: map-get(colors.$secondary-palette, 100) !important;
+    }
+  }
+
+  &.cream-button {
+    background: colors.$cream !important;
+    color: colors.$dusty-rose !important;
+
+    &:hover .mat-mdc-button-persistent-ripple::before,
+    &:active .mat-mdc-button-persistent-ripple::before {
+      background-color: colors.$cream !important;
+    }
+  }
+
+  &.error-button {
+    background: map-get(colors.$error-palette, 50) !important;
+    color: colors.$cream !important;
+
+    &:hover .mat-mdc-button-persistent-ripple::before,
+    &:active .mat-mdc-button-persistent-ripple::before {
+      background-color: map-get(colors.$error-palette, 0) !important;
+    }
+  }
+}
+
+.mat-mdc-outlined-button {
+  &.dark-button {
+    background: colors.$cream !important;
+    color: colors.$deep-ocean !important;
+    border-color: colors.$deep-ocean !important;
+
+    &:hover .mat-mdc-button-persistent-ripple::before,
+    &:active .mat-mdc-button-persistent-ripple::before {
+      background-color: map-get(colors.$secondary-palette, 50) !important;
+    }
+  }
+
+  &.cream-button {
+    background: colors.$cream !important;
+    color: colors.$dusty-rose !important;
+    border-color: colors.$dusty-rose !important;
+
+    &:hover .mat-mdc-button-persistent-ripple::before,
+    &:active .mat-mdc-button-persistent-ripple::before {
+      background-color: map-get(colors.$neutral-palette, 50) !important;
+    }
+  }
+
+  &.error-button {
+    background: map-get(colors.$error-palette, 50) !important;
+    color: colors.$cream !important;
+
+    &:hover .mat-mdc-button-persistent-ripple::before,
+    &:active .mat-mdc-button-persistent-ripple::before {
+      background-color: map-get(colors.$error-palette, 0) !important;
+    }
+  }
+}
+
+.mat-mdc-icon-button {
+  border-radius: 0 !important;
+
+  .mat-mdc-button-persistent-ripple::before {
+    border-radius: 0 !important;
+  }
+}
