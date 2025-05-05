@@ -1,0 +1,26 @@
+<div class="auth-page-layout" *transloco="let t">
+  <img class="main-image" src="assets/images/still-life-tools-nail-art.png" alt="background-image">
+  <div class="content-wrapper">
+    <h1>{{ t('auth.logIn.title') }}</h1>
+
+    <form [formGroup]="form">
+      <div class="form-field-wrapper">
+        <span class="label">{{ t('auth.email') }}</span>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="form-field-wrapper">
+        <span class="label">{{ t('auth.password') }}</span>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="password" type="password">
+        </mat-form-field>
+      </div>
+    </form>
+
+    <div class="actions-wrapper">
+      <button mat-raised-button class="dark-button" (click)="onSubmit()">{{ t('auth.signIn') }}</button>
+      <button mat-button class="dark-button" [routerLink]="['../', 'sign-up']">{{ t('auth.createAccount') }}</button>
+    </div>
+  </div>
+</div>

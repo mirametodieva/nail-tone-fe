@@ -1,3 +1,16 @@
 {
-  "hi": "Hello!"
+  "auth": {
+    "email": "Email:",
+    "password": "Password:",
+    "createAccount": "Create account",
+    "signIn": "Sign in",
+    "signUp": {
+      "title": "Let's get started!",
+      "confirmPassword": "Confirm password:",
+      "salonName": "Salon name:"
+    },
+    "logIn": {
+      "title": "Welcome to NailTone!"
+    }
+  }
 }

@@ -1,13 +1,15 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {AppCommonModule} from "./app-common.module";
 import {MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions} from "@angular/material/core";
 import {TranslocoRootModule} from './transloco-root.module';
-import {provideHttpClient} from "@angular/common/http";
+import {provideHttpClient, withInterceptors} from "@angular/common/http";
+import {AuthModule} from "./pages/auth/auth.module";
+import {authInterceptorFn} from "./services/auth.interceptor";
+import {HomeComponent} from "./pages/home/home/home.component";
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true,
@@ -19,16 +21,20 @@ const globalRippleConfig: RippleGlobalOptions = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppCommonModule,
     AppRoutingModule,
-    TranslocoRootModule
+    TranslocoRootModule,
+    AuthModule
   ],
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([
+      authInterceptorFn
+    ])),
     provideAnimationsAsync(),
     {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig}
   ],

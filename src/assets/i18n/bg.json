@@ -1,3 +1,15 @@
 {
-  "hi": "Здрасти!"
+  "auth": {
+    "username": "Username:_BG",
+    "password": "Password:_BG",
+    "createAccount": "Create account_BG",
+    "signIn": "Sign in_BG",
+    "signUp": {
+      "title": "Let's get started!_BG",
+      "confirmPassword": "Confirm password:_BG"
+    },
+    "logIn": {
+      "title": "Welcome to NailTone!_BG"
+    }
+  }
 }

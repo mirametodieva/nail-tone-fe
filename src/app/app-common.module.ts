@@ -1,17 +1,23 @@
 import {NgModule} from "@angular/core";
-import {MaterialModule} from "./modules/material-modules";
 import {ToolbarComponent} from "./components/toolbar/toolbar.component";
+import {MaterialModule} from "./modules/material.module";
+import {TranslocoModule} from "@ngneat/transloco";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
-    ToolbarComponent
+    ToolbarComponent,
   ],
   imports: [
-    MaterialModule
+    MaterialModule,
+    TranslocoModule,
+    ReactiveFormsModule
   ],
   exports: [
     MaterialModule,
-    ToolbarComponent
+    ToolbarComponent,
+    TranslocoModule,
+    ReactiveFormsModule
   ]
 })
 export class AppCommonModule { }

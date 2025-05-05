@@ -16,3 +16,15 @@
 .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mat-mdc-notch-piece {
   border: none;
 }
+
+.form-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
+
+  .label {
+    color: colors.$deep-ocean;
+    font-weight: 500;
+  }
+}
