@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Language, LanguageService} from "../../services/language.service";
 
 @Component({
   selector: 'app-toolbar',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class ToolbarComponent {
 
+  constructor(private readonly languageService: LanguageService) {
+  }
+
+  changeLanguage(language: Language) {
+    this.languageService.switchLanguage(language);
+
+  }
+  protected readonly Languages = Language;
 }

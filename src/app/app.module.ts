@@ -6,6 +6,8 @@ import {AppComponent} from './app.component';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {AppCommonModule} from "./app-common.module";
 import {MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions} from "@angular/material/core";
+import {TranslocoRootModule} from './transloco-root.module';
+import {provideHttpClient} from "@angular/common/http";
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true,
@@ -22,9 +24,11 @@ const globalRippleConfig: RippleGlobalOptions = {
   imports: [
     BrowserModule,
     AppCommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TranslocoRootModule
   ],
   providers: [
+    provideHttpClient(),
     provideAnimationsAsync(),
     {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig}
   ],
