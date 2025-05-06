@@ -1,0 +1,37 @@
+<div class="add-new-nail-polish-wrapper" *transloco="let t">
+  <h1>{{t('nailPolish.addNew')}}</h1>
+  <form [formGroup]="form">
+    <div class="form-field-wrapper">
+      <span class="label">{{ t('nailPolish.name') }}&nbsp;&ast;</span>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </div>
+    <div class="form-field-wrapper">
+      <span class="label">{{ t('nailPolish.serialNumber') }}&nbsp;&ast;</span>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="serialNumber">
+      </mat-form-field>
+    </div>
+    <div class="form-field-wrapper">
+      <span class="label">{{ t('nailPolish.catalogNumber') }}&nbsp;&ast;</span>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="catalogNumber" type="number">
+      </mat-form-field>
+    </div>
+    <div class="form-field-wrapper">
+      <span class="label">{{ t('nailPolish.brand') }}</span>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="brand">
+      </mat-form-field>
+    </div>
+    <div class="form-field-wrapper">
+      <span class="label">{{ t('nailPolish.image') }}&nbsp;&ast;</span>
+      <button mat-stroked-button class="cream-button">
+        <mat-icon>upload</mat-icon>
+        {{ t('upload') }}
+      </button>
+    </div>
+  </form>
+  <button mat-raised-button class="dark-button submit-button" (click)="onSubmit()">{{ t('nailPolish.add') }}</button>
+</div>

@@ -10,6 +10,8 @@ import {provideHttpClient, withInterceptors} from "@angular/common/http";
 import {AuthModule} from "./pages/auth/auth.module";
 import {authInterceptorFn} from "./services/auth.interceptor";
 import {HomeComponent} from "./pages/home/home/home.component";
+import {NailPolishModule} from "./pages/nail-polish/nail-polish.module";
+import {ConfirmationDialogComponent} from "./pages/home/confirmation-dialog/confirmation-dialog.component";
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true,
@@ -22,14 +24,16 @@ const globalRippleConfig: RippleGlobalOptions = {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
     AppCommonModule,
     AppRoutingModule,
     TranslocoRootModule,
-    AuthModule
+    AuthModule,
+    NailPolishModule
   ],
   providers: [
     provideHttpClient(withInterceptors([

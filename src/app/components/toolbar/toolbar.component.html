@@ -1,11 +1,11 @@
 <mat-toolbar>
-  <button mat-icon-button>
+  <button mat-icon-button [routerLink]="['/', 'home']">
     <mat-icon>home</mat-icon>
   </button>
   <button mat-icon-button>
     <mat-icon>upload</mat-icon>
   </button>
-  <button mat-icon-button>
+  <button mat-icon-button [routerLink]="['/', 'nail-polish', 'add']">
     <mat-icon>palette</mat-icon>
   </button>
   <button mat-icon-button [matMenuTriggerFor]="languageMenu">

@@ -28,3 +28,9 @@
     font-weight: 500;
   }
 }
+
+.mat-mdc-menu-item,
+.mat-mdc-menu-item:visited,
+.mat-mdc-menu-item:link {
+  --mat-menu-item-label-text-color: #395C6B;
+}

@@ -13,10 +13,6 @@ import {AuthRoutingModule} from "./auth-routing.module";
   imports: [
     AppCommonModule,
     AuthRoutingModule
-  ],
-  exports: [
-    LogInComponent,
-    SignUpComponent
   ]
 })
 export class AuthModule {

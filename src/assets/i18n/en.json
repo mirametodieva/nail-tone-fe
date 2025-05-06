@@ -1,4 +1,5 @@
 {
+  "upload": "Upload",
   "auth": {
     "email": "Email:",
     "password": "Password:",
@@ -12,5 +13,22 @@
     "logIn": {
       "title": "Welcome to NailTone!"
     }
+  },
+  "home": {
+    "profileTitle": "{{name}}'s profile",
+    "colorsCatalog": "Colors catalog:",
+    "nailPolishDeletionConfirmation": "Are you sure you want to delete this color?",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "nailPolish": {
+    "addNew": "Add new nail polish color",
+    "name": "Name:",
+    "serialNumber": "Serial number:",
+    "catalogNumber": "Catalog number:",
+    "brand": "Brand:",
+    "image": "Image",
+    "add": "Add",
+    "successMessage": "Yayy, you successfully added a new color!"
   }
 }

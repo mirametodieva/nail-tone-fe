@@ -1,0 +1,14 @@
+@use 'colors';
+
+.confirmation-dialog {
+  height: 100%;
+  width: 100%;
+
+  .mat-mdc-dialog-surface {
+    border-radius: 0;
+  }
+}
+
+.cdk-overlay-pane.mat-mdc-dialog-panel {
+  max-width: 100dvw !important;
+}

@@ -1,1 +1,11 @@
-<p>home works!</p>
+<div class="home-wrapper" *transloco="let t">
+  @if (details$ | async; as details) {
+    <h1>{{ t('home.profileTitle', {name: details.name}) }}</h1>
+    <h3>{{ t('home.colorsCatalog') }}</h3>
+    <div class="cards-wrapper">
+      @for (nailPolish of details.nailPolishes; track $index) {
+        <app-nail-polish-card [nailPolish]="nailPolish" [withAction]="true" (onAction)="onNailPolishDeletion(nailPolish.id)"></app-nail-polish-card>
+      }
+    </div>
+  }
+</div>

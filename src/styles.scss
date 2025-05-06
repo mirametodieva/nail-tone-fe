@@ -3,6 +3,8 @@
 @use 'buttons';
 @use 'fonts';
 @use 'mat-toolbar';
+@use 'mat-snackbar';
+@use 'mat-dialog';
 
 @use 'm3-theme' as theme;
 @use '@angular/material' as mat;
@@ -42,5 +44,12 @@ h3 {
 h4 {
   font-size: 18px;
   font-weight: 500;
+  margin: 0;
+}
+
+
+h5 {
+  font-size: 15px;
+  font-weight: 700;
   margin: 0;
 }
