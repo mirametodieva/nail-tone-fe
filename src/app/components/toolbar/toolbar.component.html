@@ -2,7 +2,7 @@
   <button mat-icon-button [routerLink]="['/', 'home']">
     <mat-icon>home</mat-icon>
   </button>
-  <button mat-icon-button>
+  <button mat-icon-button (click)="openUploadImageDialog()">
     <mat-icon>upload</mat-icon>
   </button>
   <button mat-icon-button [routerLink]="['/', 'nail-polish', 'add']">

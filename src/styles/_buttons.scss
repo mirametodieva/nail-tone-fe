@@ -106,3 +106,15 @@
     border-radius: 0 !important;
   }
 }
+
+.p-button {
+  --p-button-primary-background: #FAF3DD;
+  --p-button-primary-hover-background: #cdc6b2;
+  --p-button-primary-active-background: #cdc6b2;
+  --p-button-primary-border-color: #CC857E;
+  --p-button-primary-hover-border-color: #CC857E;
+  --p-button-primary-active-border-color: #CC857E;
+  --p-button-primary-color: #CC857E;
+  --p-button-primary-hover-color: #CC857E;
+  --p-button-primary-active-color: #CC857E;
+}

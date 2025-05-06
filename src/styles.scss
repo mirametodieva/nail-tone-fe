@@ -5,6 +5,8 @@
 @use 'mat-toolbar';
 @use 'mat-snackbar';
 @use 'mat-dialog';
+@use 'mat-stepper';
+@use 'p-fileupload';
 
 @use 'm3-theme' as theme;
 @use '@angular/material' as mat;

@@ -27,8 +27,12 @@
     "serialNumber": "Serial number:",
     "catalogNumber": "Catalog number:",
     "brand": "Brand:",
-    "image": "Image",
+    "color": "Color",
     "add": "Add",
+    "uploadImage": "Upload image",
     "successMessage": "Yayy, you successfully added a new color!"
+  },
+  "uploadImage": {
+    "choose": "Choose an image"
   }
 }

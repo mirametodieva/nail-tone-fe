@@ -1,0 +1,83 @@
+@use 'colors';
+
+.upload-image-wrapper {
+  padding-top: 28px;
+  position: relative;
+  background-color: colors.$dusty-rose;
+
+  .cancel-icon {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    color: colors.$cream;
+  }
+
+  h3 {
+    color: colors.$cream;
+  }
+
+  .step-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: calc(100dvh - 124px);
+
+    .content-wrapper {
+      flex-grow: 1;
+    }
+
+    p-fileupload {
+      display: inline-block;
+    }
+  }
+
+  .radio-label {
+    color: colors.$cream;
+    padding: 20px 0 10px;
+    font-size: 16px;
+  }
+
+  .radio-image {
+    width: 70%;
+  }
+
+  .color-image {
+    position: relative;
+    width: 100%;
+
+    .image {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+    }
+
+    .grey-image {
+      filter: grayscale(100%);
+    }
+  }
+
+  .title-row {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 22px;
+
+    .blob {
+      width: 50px;
+    }
+  }
+
+  .cards-wrapper {
+    padding: 22px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+}

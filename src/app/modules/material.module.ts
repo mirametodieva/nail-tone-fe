@@ -8,6 +8,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatIconModule,
     MatMenuModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule,
+    MatRadioModule
   ],
   exports: [
     MatButtonModule,
@@ -31,7 +35,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatIconModule,
     MatMenuModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule { }

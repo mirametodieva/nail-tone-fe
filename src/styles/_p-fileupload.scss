@@ -1,0 +1,15 @@
+@use 'colors';
+
+.p-fileupload-advanced {
+  --p-fileupload-background: #CC857E;
+  --p-fileupload-border-color: #CC857E;
+}
+
+.p-fileupload-file-thumbnail {
+  width: 100%;
+}
+
+.p-fileupload-file-info {
+  color: colors.$cream;
+  word-break: break-word;
+}
