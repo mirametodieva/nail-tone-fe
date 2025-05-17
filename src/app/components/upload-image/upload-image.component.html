@@ -3,7 +3,7 @@
   <mat-stepper linear>
     <mat-step>
       <div class="step-wrapper">
-        <h3>1. Upload image</h3>
+        <h3>{{t('uploadImage.uploadImage')}}</h3>
         <div class="content-wrapper">
           <p-fileupload
             (onSelect)="onUpload($event)"
@@ -17,37 +17,37 @@
           >
           </p-fileupload>
         </div>
-        <button mat-raised-button class="dark-button" (click)="goToSecondStep()">Next</button>
+        <button mat-raised-button class="dark-button" (click)="goToSecondStep()">{{ t('uploadImage.next') }}</button>
       </div>
     </mat-step>
     <mat-step>
       <div class="step-wrapper">
-        <h3>2. Select image version</h3>
+        <h3>{{ t('uploadImage.selectImageVersion') }}</h3>
         <div class="content-wrapper">
           <mat-radio-group [(ngModel)]="useOriginalImage">
             <mat-radio-button [value]="true">
-              <div class="radio-label">Original image</div>
+              <div class="radio-label">{{ t('uploadImage.originalImage') }}</div>
               @if (originalImageUrl) {
-                <img class="radio-image" [src]="originalImageUrl" alt="Original Image">
+                <img class="radio-image" [src]="originalImageUrl" [alt]="t('uploadImage.originalImage')">
               }
             </mat-radio-button>
             <mat-radio-button [value]="true">
-              <div class="radio-label">Normalized image</div>
+              <div class="radio-label">{{ t('uploadImage.normalizedImage') }}</div>
               @if (normalizedImageUrl) {
-                <img class="radio-image" [src]="normalizedImageUrl" alt="Normalized Image">
+                <img class="radio-image" [src]="normalizedImageUrl" [alt]="t('uploadImage.normalizedImage')">
               }
             </mat-radio-button>
           </mat-radio-group>
         </div>
-        <button mat-raised-button class="dark-button" (click)="goToThirdStep()">Next</button>
+        <button mat-raised-button class="dark-button" (click)="goToThirdStep()">{{ t('uploadImage.next') }}</button>
       </div>
     </mat-step>
     <mat-step>
       <div class="step-wrapper">
-        <h3>3. Choose color</h3>
+        <h3>{{t('uploadImage.chooseColor')}}</h3>
         @if (!mainStepsOnly) {
           <mat-checkbox [(ngModel)]="displaySegments">
-            <span class="radio-label">Display segmented nails</span>
+            <span class="radio-label">{{t('uploadImage.displaySegmentedNails')}}</span>
           </mat-checkbox>
         }
         <div class="content-wrapper">
@@ -62,7 +62,7 @@
           </div>
 
         </div>
-        <button mat-raised-button class="dark-button" (click)="openEyeDropper()">Choose color</button>
+        <button mat-raised-button class="dark-button" (click)="openEyeDropper()">{{t('uploadImage.chooseColorMessage')}}</button>
       </div>
     </mat-step>
     @if (!mainStepsOnly) {
@@ -70,7 +70,7 @@
         <div class="step-wrapper">
           <div class="content-wrapper">
             <div class="title-row">
-              <h3>Selected color: </h3>
+              <h3>{{t('uploadImage.selectedColor')}}</h3>
               <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="blob"
                    [style]="{color: pickedColor}">
                 <path fill="currentColor" stroke="white" stroke-width="6"
@@ -79,20 +79,24 @@
               </svg>
             </div>
 
-            <h3>Closest nail polish colors: </h3>
+            <h3>{{t('uploadImage.closestColors')}}</h3>
             <div class="cards-wrapper">
               @for (nailPolish of closestNailPolishes$ | async; track $index) {
                 <app-nail-polish-card [nailPolish]="nailPolish"></app-nail-polish-card>
-              }
+              }F
             </div>
           </div>
           <div class="actions">
-            <button mat-raised-button class="cream-button" (click)="reset()">Reset</button>
-            <button mat-raised-button class="dark-button" matStepperPrevious>Select different color</button>
+            <button mat-raised-button class="cream-button" (click)="reset()">{{t('uploadImage.reset')}}</button>
+            <button mat-raised-button class="dark-button" matStepperPrevious>{{t('uploadImage.selectDifferentColor')}}</button>
           </div>
         </div>
       </mat-step>
     }
   </mat-stepper>
-
 </div>
+@if (displaySpinner) {
+  <div class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+}

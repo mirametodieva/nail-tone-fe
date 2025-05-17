@@ -16,6 +16,8 @@ export class UploadImageComponent implements OnInit {
   @ViewChild(MatStepper) stepper!: MatStepper;
   @ViewChild(FileUpload) fileUpload!: FileUpload;
 
+  displaySpinner = false;
+
   constructor(private readonly imageService: ImageService,
               private readonly nailPolishService: NailPolishService,
               private readonly dialogRef: MatDialogRef<UploadImageComponent>,
@@ -43,6 +45,7 @@ export class UploadImageComponent implements OnInit {
   }
 
   goToSecondStep() {
+    this.displaySpinner = true;
     if (this.uploadedFile) {
       this.imageService.getImageWithEnhanceLight(this.uploadedFile)
         .subscribe(blob => {
@@ -50,6 +53,7 @@ export class UploadImageComponent implements OnInit {
           this.normalizedImageUrl = URL.createObjectURL(blob);
           this.originalImageUrl = URL.createObjectURL(this.uploadedFile!);
           this.goToNextStep();
+          this.displaySpinner = false;
         });
     }
   }
@@ -59,10 +63,12 @@ export class UploadImageComponent implements OnInit {
     if (this.mainStepsOnly) {
       this.goToNextStep();
     } else {
+      this.displaySpinner = true;
       this.imageService.getSegmentNails(file!)
         .subscribe(blob => {
           this.segmentedImageUrl = URL.createObjectURL(blob);
           this.goToNextStep();
+          this.displaySpinner = false;
         });
     }
   }

@@ -5,10 +5,14 @@
     "password": "Password:",
     "createAccount": "Create account",
     "signIn": "Sign in",
+    "requiredError": "This field is required.",
+    "invalidEmailError": "Please enter a valid email address.",
+    "passwordMismatchError": "Passwords do not match. Please check again.",
     "signUp": {
       "title": "Let's get started!",
       "confirmPassword": "Confirm password:",
-      "salonName": "Salon name:"
+      "salonName": "Salon name:",
+      "passwordRequirements": "Your password must be between 8 and include at least one uppercase letter, one lowercase letter, one digit, and one special character."
     },
     "logIn": {
       "title": "Welcome to NailTone!"
@@ -19,7 +23,9 @@
     "colorsCatalog": "Colors catalog:",
     "nailPolishDeletionConfirmation": "Are you sure you want to delete this color?",
     "cancel": "Cancel",
-    "delete": "Delete"
+    "delete": "Delete",
+    "noAvailableColors": "Looks like you don't have any colors yet. Add some now!",
+    "addColor": "Add color"
   },
   "nailPolish": {
     "addNew": "Add new nail polish color",
@@ -33,6 +39,18 @@
     "successMessage": "Yayy, you successfully added a new color!"
   },
   "uploadImage": {
-    "choose": "Choose an image"
+    "choose": "Choose an image",
+    "next": "Next",
+    "uploadImage": "1. Upload image",
+    "selectImageVersion": "2. Select image version",
+    "originalImage": "Original image",
+    "normalizedImage": "Normalized image",
+    "chooseColor": "3. Choose color",
+    "displaySegmentedNails": "Display segmented nails",
+    "chooseColorMessage": "Choose color",
+    "selectedColor": "Selected color:",
+    "closestColors": "Closest nail polish colors:",
+    "reset": "Reset",
+    "selectDifferentColor": "Select different color"
   }
 }

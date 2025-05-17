@@ -14,6 +14,7 @@ import {NailPolishModule} from "./pages/nail-polish/nail-polish.module";
 import {ConfirmationDialogComponent} from "./pages/home/confirmation-dialog/confirmation-dialog.component";
 import {providePrimeNG} from "primeng/config";
 import Aura from '@primeng/themes/aura';
+import {errorHandlerInterceptor} from "./services/error-handler.interceptor";
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true,
@@ -39,7 +40,8 @@ const globalRippleConfig: RippleGlobalOptions = {
   ],
   providers: [
     provideHttpClient(withInterceptors([
-      authInterceptorFn
+      authInterceptorFn,
+      errorHandlerInterceptor
     ])),
     provideAnimationsAsync(),
     providePrimeNG({

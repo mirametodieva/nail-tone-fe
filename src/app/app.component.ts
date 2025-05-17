@@ -22,7 +22,7 @@ export class AppComponent extends Destroyable implements OnInit {
       filter(event => event instanceof NavigationEnd)
     ).subscribe(event => {
       const navigationEndEvent = event as NavigationEnd;
-      this.displayToolbar = this.checkUrl(navigationEndEvent.url);
+      this.displayToolbar = this.checkUrl(navigationEndEvent.urlAfterRedirects);
     });
   }
 

@@ -13,7 +13,14 @@
       <div class="form-field-wrapper">
         <span class="label">{{ t('auth.password') }}</span>
         <mat-form-field appearance="outline">
-          <input matInput formControlName="password" type="password">
+          <input matInput formControlName="password" [type]="hidePassword ? 'text' : 'password'">
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+          >
+            <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
         </mat-form-field>
       </div>
     </form>

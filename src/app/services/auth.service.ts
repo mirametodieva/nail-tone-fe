@@ -23,6 +23,10 @@ export class AuthService {
     );
   }
 
+  logout(): void {
+    localStorage.removeItem('authToken');
+  }
+
   private saveAuthToken(tokenModel: TokenModel) {
     localStorage.setItem('authToken', tokenModel.token);
   }

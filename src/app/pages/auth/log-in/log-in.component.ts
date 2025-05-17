@@ -13,6 +13,7 @@ export class LogInComponent {
     email: this.fb.control<string | null>(null, [Validators.required, Validators.email]),
     password: this.fb.control<string | null>(null, Validators.required)
   });
+  hidePassword = false;
 
   constructor(private readonly fb: FormBuilder,
               private readonly authService: AuthService,

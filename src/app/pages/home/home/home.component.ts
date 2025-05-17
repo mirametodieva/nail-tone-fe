@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BeautySalonService} from "../../../services/beauty-salon.service";
-import {filter, Observable, switchMap} from "rxjs";
+import {filter, map, Observable, switchMap, tap} from "rxjs";
 import {BeautySalonDetails} from "../../../services/models/beauty-salon-details";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "../confirmation-dialog/confirmation-dialog.component";
@@ -20,7 +20,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.details$ = this.beautySalonService.getBeautySalonDetails();
+    this.details$ = this.beautySalonService.getBeautySalonDetails().pipe(
+      tap(result => result.nailPolishes = result.nailPolishes.reverse())
+    );
   }
 
   onNailPolishDeletion(id: string): void {

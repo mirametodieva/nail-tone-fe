@@ -1,15 +1,56 @@
 {
+  "upload": "Качване",
   "auth": {
-    "username": "Username:_BG",
-    "password": "Password:_BG",
-    "createAccount": "Create account_BG",
-    "signIn": "Sign in_BG",
+    "email": "Имейл:",
+    "password": "Парола:",
+    "createAccount": "Създай акаунт",
+    "signIn": "Вход",
+    "requiredError": "Това поле е задължително.",
+    "invalidEmailError": "Моля, въведете валиден имейл адрес.",
+    "passwordMismatchError": "Паролите не съвпадат. Моля, проверете отново.",
     "signUp": {
-      "title": "Let's get started!_BG",
-      "confirmPassword": "Confirm password:_BG"
+      "title": "Да започваме!",
+      "confirmPassword": "Потвърди паролата:",
+      "salonName": "Име на салона:",
+      "passwordRequirements": "Вашата парола трябва да е поне 8 символа и да съдържа поне една главна буква, една малка буква, една цифра и един специален символ."
     },
     "logIn": {
-      "title": "Welcome to NailTone!_BG"
+      "title": "Добре дошли в NailTone!"
     }
+  },
+  "home": {
+    "profileTitle": "Профила на {{name}}",
+    "colorsCatalog": "Каталог с цветове:",
+    "nailPolishDeletionConfirmation": "Сигурни ли сте, че искате да изтриете този цвят?",
+    "cancel": "Отказ",
+    "delete": "Изтриване",
+    "noAvailableColors": "Изглежда, че все още нямате добавени цветове. Да добавим сега!",
+    "addColor": "Добави цвят"
+  },
+  "nailPolish": {
+    "addNew": "Добавяне на нов лак за нокти",
+    "name": "Име:",
+    "serialNumber": "Сериен номер:",
+    "catalogNumber": "Каталожен номер:",
+    "brand": "Марка:",
+    "color": "Цвят",
+    "add": "Добави",
+    "uploadImage": "Качване на изображение",
+    "successMessage": "Йейй, успешно добавихте нов цвят!"
+  },
+  "uploadImage": {
+    "choose": "Избери изображение",
+    "next": "Напред",
+    "uploadImage": "1. Качване на изображение",
+    "selectImageVersion": "2. Избор на версия на изображението",
+    "originalImage": "Оригинално изображение",
+    "normalizedImage": "Изображение с нормализирана светлина",
+    "chooseColor": "3. Избор на цвят",
+    "displaySegmentedNails": "Покажи сегментираните нокти",
+    "chooseColorMessage": "Изберете цвят",
+    "selectedColor": "Избран цвят:",
+    "closestColors": "Най-близки цветове в салона:",
+    "reset": "Рестарниране",
+    "selectDifferentColor": "Изберете друг цвят"
   }
 }

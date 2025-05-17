@@ -2,6 +2,7 @@
 
 .auth-page-layout {
   height: 100%;
+  min-height: 100dvh;
   background-color: colors.$dusty-rose;
   display: flex;
   flex-direction: column;

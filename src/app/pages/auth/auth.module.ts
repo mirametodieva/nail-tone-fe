@@ -3,6 +3,7 @@ import {LogInComponent} from "./log-in/log-in.component";
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {AppCommonModule} from "../../app-common.module";
 import {AuthRoutingModule} from "./auth-routing.module";
+import {JsonPipe} from "@angular/common";
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {AuthRoutingModule} from "./auth-routing.module";
   ],
   imports: [
     AppCommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    JsonPipe
   ]
 })
 export class AuthModule {

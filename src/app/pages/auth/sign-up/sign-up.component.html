@@ -1,38 +1,69 @@
 <div class="auth-page-layout" *transloco="let t">
   <img class="main-image" src="assets/images/still-life-tools-nail-art.png" alt="background-image">
   <div class="content-wrapper">
-    <h1>{{t('auth.signUp.title')}}</h1>
+    <h1>{{ t('auth.signUp.title') }}</h1>
 
     <form [formGroup]="form">
       <div class="form-field-wrapper">
-        <span class="label">{{t('auth.signUp.salonName')}}</span>
+        <span class="label">{{ t('auth.signUp.salonName') }}</span>
         <mat-form-field appearance="outline">
           <input matInput formControlName="name">
+          @if (form.get('name')?.hasError('required')) {
+            <mat-error>{{ t('auth.requiredError') }}</mat-error>
+          }
         </mat-form-field>
+
       </div>
       <div class="form-field-wrapper">
-        <span class="label">{{t('auth.email')}}</span>
+        <span class="label">{{ t('auth.email') }}</span>
         <mat-form-field appearance="outline">
           <input matInput formControlName="email" type="email">
+          @if (form.get('email')?.hasError('required')) {
+            <mat-error>{{ t('auth.requiredError') }}</mat-error>
+          }
+          @if (form.get('email')?.hasError('email')) {
+            <mat-error>{{ t('auth.invalidEmailError') }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="form-field-wrapper password-field">
+        <span class="label">{{ t('auth.password') }}</span>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="password" [type]="hidePassword ? 'text' : 'password'">
+          <mat-hint>{{ t('auth.signUp.passwordRequirements') }}</mat-hint>
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+          >
+            <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
         </mat-form-field>
       </div>
       <div class="form-field-wrapper">
-        <span class="label">{{t('auth.password')}}</span>
+        <span class="label">{{ t('auth.signUp.confirmPassword') }}</span>
         <mat-form-field appearance="outline">
-          <input matInput formControlName="password" type="password">
+          <input matInput formControlName="confirmedPassword" [type]="hideConfirmedPassword ? 'text' : 'password'">
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hideConfirmedPassword = !hideConfirmedPassword"
+          >
+            <mat-icon>{{ hideConfirmedPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+          @if (form.get('confirmedPassword')?.hasError('required')) {
+            <mat-error>{{ t('auth.requiredError') }}</mat-error>
+          }
         </mat-form-field>
       </div>
-      <div class="form-field-wrapper">
-        <span class="label">{{t('auth.signUp.confirmPassword')}}</span>
-        <mat-form-field appearance="outline">
-          <input matInput formControlName="confirmedPassword" type="password">
-        </mat-form-field>
-      </div>
+      @if (form.hasError('passwordMismatch') && form.get('confirmedPassword')?.touched) {
+        <mat-error>{{ t('auth.passwordMismatchError') }}</mat-error>
+      }
     </form>
 
     <div class="actions-wrapper">
-      <button mat-raised-button class="dark-button" (click)="onSubmit()">{{t('auth.createAccount')}}</button>
-      <button mat-button class="dark-button" [routerLink]="['../', 'sign-in']">{{t('auth.signIn')}}</button>
+      <button mat-raised-button class="dark-button" (click)="onSubmit()">{{ t('auth.createAccount') }}</button>
+      <button mat-button class="dark-button" [routerLink]="['../', 'sign-in']">{{ t('auth.signIn') }}</button>
     </div>
   </div>
 </div>
