@@ -17,7 +17,7 @@
           >
           </p-fileupload>
         </div>
-        <button mat-raised-button class="dark-button" (click)="goToSecondStep()">{{ t('uploadImage.next') }}</button>
+        <button mat-raised-button class="dark-button" [disabled]="!uploadedFile" (click)="goToSecondStep()">{{ t('uploadImage.next') }}</button>
       </div>
     </mat-step>
     <mat-step>
@@ -31,7 +31,7 @@
                 <img class="radio-image" [src]="originalImageUrl" [alt]="t('uploadImage.originalImage')">
               }
             </mat-radio-button>
-            <mat-radio-button [value]="true">
+            <mat-radio-button [value]="false">
               <div class="radio-label">{{ t('uploadImage.normalizedImage') }}</div>
               @if (normalizedImageUrl) {
                 <img class="radio-image" [src]="normalizedImageUrl" [alt]="t('uploadImage.normalizedImage')">
@@ -83,7 +83,7 @@
             <div class="cards-wrapper">
               @for (nailPolish of closestNailPolishes$ | async; track $index) {
                 <app-nail-polish-card [nailPolish]="nailPolish"></app-nail-polish-card>
-              }F
+              }
             </div>
           </div>
           <div class="actions">

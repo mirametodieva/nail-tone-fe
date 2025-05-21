@@ -16,9 +16,10 @@ export class AddNewNailPolishComponent {
   form = this.fb.group({
     name: this.fb.control<string | null>(null, Validators.required),
     serialNumber: this.fb.control<string | null>(null, Validators.required),
-    catalogNumber: this.fb.control<number>(1, Validators.required),
+    catalogNumber: this.fb.control<number>(1,
+      [Validators.required, Validators.min(0), Validators.max(999999999)]),
     brand: this.fb.control<string | null>(null),
-    colorCode: this.fb.control<string | null>('#FFF', Validators.required)
+    colorCode: this.fb.control<string | null>(null, Validators.required)
   });
 
   get colorCodeControl(): FormControl<string | null> {

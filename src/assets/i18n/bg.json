@@ -7,6 +7,7 @@
     "signIn": "Вход",
     "requiredError": "Това поле е задължително.",
     "invalidEmailError": "Моля, въведете валиден имейл адрес.",
+    "invalidPasswordPattern": "Моля, въведете валидна парола.",
     "passwordMismatchError": "Паролите не съвпадат. Моля, проверете отново.",
     "signUp": {
       "title": "Да започваме!",
@@ -36,7 +37,8 @@
     "color": "Цвят",
     "add": "Добави",
     "uploadImage": "Качване на изображение",
-    "successMessage": "Йейй, успешно добавихте нов цвят!"
+    "successMessage": "Йейй, успешно добавихте нов цвят!",
+    "invalidCatalogNumber": "Моля, въведете валиден каталожен номер."
   },
   "uploadImage": {
     "choose": "Избери изображение",

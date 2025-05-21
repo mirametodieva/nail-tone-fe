@@ -61,6 +61,11 @@
       background-color: map-get(colors.$error-palette, 0) !important;
     }
   }
+
+  &[disabled].mat-mdc-button-disabled,
+  &.mat-mdc-button-disabled.mat-mdc-button-disabled {
+    opacity: 0.8;
+  }
 }
 
 .mat-mdc-outlined-button {

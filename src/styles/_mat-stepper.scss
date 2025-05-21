@@ -9,3 +9,7 @@
 .mat-step-label {
   display: none !important;
 }
+
+.mat-step-header:has(.mat-step-icon-state-number){
+  pointer-events: none !important;
+}

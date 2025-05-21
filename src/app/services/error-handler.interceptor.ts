@@ -27,7 +27,7 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
 
       // Optional: show a toast or alert
       snackBar.open(userMessage, '', {
-        duration: 5000,
+        duration: 3000,
         panelClass: 'error-mode'
       });
 

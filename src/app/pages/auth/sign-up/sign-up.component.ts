@@ -13,7 +13,7 @@ export class SignUpComponent {
     name: this.fb.control<string | null>(null, Validators.required),
     email: this.fb.control<string | null>(null, [Validators.required, Validators.email]),
     password: this.fb.control<string | null>(null, [Validators.required,
-      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-\+=<>?]).{8,50}$/)]),
+      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-\+=<>?.]).{8,50}$/)]),
     confirmedPassword: this.fb.control<string | null>(null, Validators.required)
   }, { validators: this.passwordsMatchValidator });
 

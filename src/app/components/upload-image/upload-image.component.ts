@@ -30,7 +30,7 @@ export class UploadImageComponent implements OnInit {
   normalizedImageUrl?: string;
   originalImageUrl?: string;
   segmentedImageUrl?: string;
-  useOriginalImage = false;
+  useOriginalImage: boolean = true;
   displaySegments = true;
 
   pickedColor?: string;

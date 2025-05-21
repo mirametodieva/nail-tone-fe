@@ -26,7 +26,8 @@
           }
         </mat-form-field>
       </div>
-      <div class="form-field-wrapper password-field">
+      <div class="form-field-wrapper password-field"
+           [ngClass]="{'invalid': form.get('password')?.touched && !form.get('password')?.valid}">
         <span class="label">{{ t('auth.password') }}</span>
         <mat-form-field appearance="outline">
           <input matInput formControlName="password" [type]="hidePassword ? 'text' : 'password'">
@@ -38,6 +39,12 @@
           >
             <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
           </button>
+          @if (form.get('password')?.touched && form.get('password')?.hasError('required')) {
+            <mat-error>{{ t('auth.requiredError') }}</mat-error>
+          }
+          @if (form.get('password')?.touched && form.get('password')?.hasError('pattern')) {
+            <mat-error>{{ t('auth.invalidPasswordPattern') }}</mat-error>
+          }
         </mat-form-field>
       </div>
       <div class="form-field-wrapper">
@@ -62,8 +69,8 @@
     </form>
 
     <div class="actions-wrapper">
-      <button mat-raised-button class="dark-button" (click)="onSubmit()">{{ t('auth.createAccount') }}</button>
       <button mat-button class="dark-button" [routerLink]="['../', 'sign-in']">{{ t('auth.signIn') }}</button>
+      <button mat-raised-button class="dark-button" (click)="onSubmit()">{{ t('auth.createAccount') }}</button>
     </div>
   </div>
 </div>
