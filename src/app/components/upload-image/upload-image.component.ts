@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {FileUpload} from "primeng/fileupload";
 import {MatStepper} from "@angular/material/stepper";
 import {ImageService} from "../../services/image.service";
@@ -15,6 +15,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 export class UploadImageComponent implements OnInit {
   @ViewChild(MatStepper) stepper!: MatStepper;
   @ViewChild(FileUpload) fileUpload!: FileUpload;
+  @ViewChild('canvas', {static: false}) canvasRef!: ElementRef<HTMLCanvasElement>;
 
   displaySpinner = false;
 
@@ -32,6 +33,7 @@ export class UploadImageComponent implements OnInit {
   segmentedImageUrl?: string;
   useOriginalImage: boolean = true;
   displaySegments = true;
+  disableColorPicking = true;
 
   pickedColor?: string;
   closestNailPolishes$?: Observable<NailPolish[]>;
@@ -62,6 +64,7 @@ export class UploadImageComponent implements OnInit {
     const file = this.useOriginalImage ? this.uploadedFile : this.normalizedImage;
     if (this.mainStepsOnly) {
       this.goToNextStep();
+      this.buildCanvasImage();
     } else {
       this.displaySpinner = true;
       this.imageService.getSegmentNails(file!)
@@ -69,8 +72,14 @@ export class UploadImageComponent implements OnInit {
           this.segmentedImageUrl = URL.createObjectURL(blob);
           this.goToNextStep();
           this.displaySpinner = false;
+          this.buildCanvasImage();
         });
     }
+  }
+
+  toggleDisplaySegmentedNails() {
+    this.displaySegments = !this.displaySegments;
+    this.buildCanvasImage();
   }
 
   reset() {
@@ -89,11 +98,7 @@ export class UploadImageComponent implements OnInit {
   }
 
   async openEyeDropper() {
-    if ('EyeDropper' in window) {
-      if (!('EyeDropper' in window)) {
-        alert('EyeDropper API is not supported in this browser.');
-        return;
-      }
+    if (('EyeDropper' in window)) {
       const eyeDropper = new (window as any).EyeDropper();
       try {
         const result = await eyeDropper.open();
@@ -107,7 +112,80 @@ export class UploadImageComponent implements OnInit {
       } catch (err) {
         console.error('EyeDropper canceled or failed:', err);
       }
+    } else {
+      console.error('EyeDropper API is not supported in this browser.');
+      this.disableColorPicking = false;
     }
+  }
+
+  onCanvasClick(event: MouseEvent) {
+    if (!this.disableColorPicking) {
+      this.getColorFromCanvas(event.clientX, event.clientY);
+      if (this.mainStepsOnly) {
+        this.dialogRef.close(this.pickedColor);
+      } else {
+        this.closestNailPolishes$ = this.nailPolishService.getClosestNailPolishes(this.pickedColor!)
+          .pipe(tap(() => this.goToNextStep()));
+      }
+    }
+  }
+
+  onCanvasTouch(event: TouchEvent) {
+    if (!this.disableColorPicking) {
+      const touch = event.touches[0];
+      this.getColorFromCanvas(touch.clientX, touch.clientY);
+      if (this.mainStepsOnly) {
+        this.dialogRef.close(this.pickedColor);
+      } else {
+        this.closestNailPolishes$ = this.nailPolishService.getClosestNailPolishes(this.pickedColor!)
+          .pipe(tap(() => this.goToNextStep()));
+      }
+    }
+  }
+
+  private buildCanvasImage() {
+    const file = this.useOriginalImage ? this.uploadedFile : this.normalizedImage;
+    if (file) {
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+
+      img.onload = () => {
+        const canvas = this.canvasRef.nativeElement;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const displaySegmentedNails = this.displaySegments && !this.mainStepsOnly && this.segmentedImageUrl;
+        if (displaySegmentedNails) {
+          ctx.filter = 'grayscale(100%)';
+        }
+        ctx.drawImage(img, 0, 0);
+        ctx.filter = 'none';
+
+        if (displaySegmentedNails) {
+          const segmentImage = new Image();
+          segmentImage.src = this.segmentedImageUrl!;
+          segmentImage.onload = () => {
+            ctx.drawImage(segmentImage, 0, 0); // Overlays segmented image
+          };
+        }
+      };
+    }
+  }
+
+  private getColorFromCanvas(clientX: number, clientY: number) {
+    const canvas = this.canvasRef.nativeElement;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+
+    const pixel = ctx.getImageData(x, y, 1, 1).data;
+    const hex = `#${[...pixel].slice(0, 3).map(v => v.toString(16).padStart(2, '0')).join('')}`;
+    this.pickedColor = hex;
   }
 
   private goToNextStep() {

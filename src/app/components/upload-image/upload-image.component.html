@@ -46,19 +46,17 @@
       <div class="step-wrapper">
         <h3>{{t('uploadImage.chooseColor')}}</h3>
         @if (!mainStepsOnly) {
-          <mat-checkbox [(ngModel)]="displaySegments">
+          <mat-checkbox (change)="toggleDisplaySegmentedNails()" [checked]="displaySegments">
             <span class="radio-label">{{t('uploadImage.displaySegmentedNails')}}</span>
           </mat-checkbox>
         }
         <div class="content-wrapper">
           <div class="color-image">
             @if (originalImageUrl) {
-              <img class="image" [ngClass]="{'grey-image': displaySegments && !mainStepsOnly}" [src]="originalImageUrl"
-                   alt="Original Image">
-              @if (displaySegments && !mainStepsOnly) {
-                <img class="image" [src]="segmentedImageUrl" alt="Segmented Image">
-              }
+              <canvas #canvas (click)="onCanvasClick($event)" (touchstart)="onCanvasTouch($event)">
+              </canvas>
             }
+            {{pickedColor}}
           </div>
 
         </div>

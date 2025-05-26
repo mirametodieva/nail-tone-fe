@@ -43,17 +43,6 @@
   .color-image {
     position: relative;
     width: 100%;
-
-    .image {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-    }
-
-    .grey-image {
-      filter: grayscale(100%);
-    }
   }
 
   .title-row {
@@ -91,4 +80,8 @@
   justify-content: center;
   align-items: center;
   z-index: 1000000;
+}
+
+canvas {
+  width: 100%;
 }

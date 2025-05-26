@@ -34,3 +34,7 @@
 .mat-mdc-menu-item:link {
   --mat-menu-item-label-text-color: #395C6B;
 }
+
+.mat-mdc-form-field-hint-wrapper {
+  color: colors.$cream;
+}
