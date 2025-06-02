@@ -33,6 +33,7 @@ export class UploadImageComponent implements OnInit {
   segmentedImageUrl?: string;
   useOriginalImage: boolean = true;
   displaySegments = true;
+  displaySegmentsCheckbox = true;
   disableColorPicking = true;
 
   pickedColor?: string;
@@ -68,11 +69,20 @@ export class UploadImageComponent implements OnInit {
     } else {
       this.displaySpinner = true;
       this.imageService.getSegmentNails(file!)
-        .subscribe(blob => {
-          this.segmentedImageUrl = URL.createObjectURL(blob);
-          this.goToNextStep();
-          this.displaySpinner = false;
-          this.buildCanvasImage();
+        .subscribe({
+          next: (blob) => {
+            this.segmentedImageUrl = URL.createObjectURL(blob);
+            this.goToNextStep();
+            this.displaySpinner = false;
+            this.buildCanvasImage();
+          },
+          error: (err) => {
+            console.error('Error during nail segmentation:', err);
+            this.displaySegmentsCheckbox = false;
+            this.displaySpinner = false;
+            this.goToNextStep();
+            this.buildCanvasImage();
+          }
         });
     }
   }

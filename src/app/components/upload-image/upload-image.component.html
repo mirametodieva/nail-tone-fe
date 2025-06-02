@@ -45,7 +45,7 @@
     <mat-step>
       <div class="step-wrapper">
         <h3>{{t('uploadImage.chooseColor')}}</h3>
-        @if (!mainStepsOnly) {
+        @if (!mainStepsOnly && displaySegmentsCheckbox) {
           <mat-checkbox (change)="toggleDisplaySegmentedNails()" [checked]="displaySegments">
             <span class="radio-label">{{t('uploadImage.displaySegmentedNails')}}</span>
           </mat-checkbox>
@@ -56,7 +56,6 @@
               <canvas #canvas (click)="onCanvasClick($event)" (touchstart)="onCanvasTouch($event)">
               </canvas>
             }
-            {{pickedColor}}
           </div>
 
         </div>

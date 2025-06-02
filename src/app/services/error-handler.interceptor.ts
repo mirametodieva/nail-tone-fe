@@ -25,11 +25,12 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
         userMessage = 'Requested resource not found.';
       }
 
-      // Optional: show a toast or alert
-      snackBar.open(userMessage, '', {
-        duration: 3000,
-        panelClass: 'error-mode'
-      });
+      if(error.status !== 503) {
+        snackBar.open(userMessage, '', {
+          duration: 3000,
+          panelClass: 'error-mode'
+        });
+      }
 
       return throwError(() => new Error(userMessage));
     })
