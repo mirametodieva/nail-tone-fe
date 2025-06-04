@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {BeautySalonDetails} from "./models/beauty-salon-details";
+import {environment} from '@env/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class ImageService {
     const formData = new FormData();
     formData.append('file', file);
 
-    return this.http.post<any>('http://localhost:8080/api/images/light-enhance', formData, {
+    return this.http.post<any>(environment.apiUrl + '/api/images/light-enhance', formData, {
       responseType: 'blob' as 'json'
     });
   }
@@ -23,7 +23,7 @@ export class ImageService {
     const formData = new FormData();
     formData.append('file', file);
 
-    return this.http.post<any>('http://localhost:8080/api/images/segment-nails', formData, {
+    return this.http.post<any>(environment.apiUrl + '/api/images/segment-nails', formData, {
       responseType: 'blob' as 'json'
     });
   }

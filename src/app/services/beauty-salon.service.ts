@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {BeautySalonDetails} from "./models/beauty-salon-details";
+import {environment} from '@env/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,6 @@ export class BeautySalonService {
   }
 
   getBeautySalonDetails(): Observable<BeautySalonDetails> {
-    return this.http.get<BeautySalonDetails>('http://localhost:8080/api/beauty-salon');
+    return this.http.get<BeautySalonDetails>(environment.apiUrl + '/api/beauty-salon');
   }
 }
