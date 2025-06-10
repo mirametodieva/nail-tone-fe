@@ -14,13 +14,13 @@ export class AuthService {
   }
 
   signUp(model: SignUpModel): Observable<TokenModel> {
-    return this.http.post<TokenModel>(environment.apiUrl + '/api/auth/registration', model).pipe(
+    return this.http.post<TokenModel>(environment.apiUrl + '/auth/registration', model).pipe(
       tap(response => this.saveAuthToken(response))
     );
   }
 
   signIn(model: SignInModel): Observable<TokenModel> {
-    return this.http.post<TokenModel>(environment.apiUrl + '/api/auth/login', model).pipe(
+    return this.http.post<TokenModel>(environment.apiUrl + '/auth/login', model).pipe(
       tap(response => this.saveAuthToken(response))
     );
   }
